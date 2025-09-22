@@ -1,0 +1,50 @@
+<div class="container mt-4">
+    <h2 class="section-title">Exam Management</h2>
+  
+    <!-- Teacher Courses -->
+    <div class="mb-4">
+      <h4>Your Courses</h4>
+      <ul class="list-group">
+        @for (course of teacherCourses; track course.idCours) {
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+            (click)="loadExamsByCourse(course.idCours)"
+          >
+            {{ course.titre_cours }}
+            <span class="badge bg-primary">{{ course.duree_cours }} hours</span>
+          </li>
+        }
+      </ul>
+    </div>
+  
+    <!-- Exams for Selected Course -->
+    @if(selectedCourseTitle) {
+        <div class="mt-4">
+          <h4>Exams for Course: {{ selectedCourseTitle }}</h4>
+          <div class="exam-list">
+            @for (exam of exams; track exam.idEx) {
+              <div class="card exam-card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">{{ exam.titre || 'No title' }}</h5>
+                  <p class="card-text">
+                    <strong>Date:</strong> {{ exam.date_ex | date:'dd/MM/yyyy' }}
+                  </p>
+                  <div class="d-flex justify-content-between">
+                    <button class="btn btn-danger" (click)="deleteExam(exam.idEx)">Delete</button>
+                    <button class="btn btn-warning" (click)="updateExam(exam)">Update</button>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+  
+    <!-- Loading Spinner -->
+    @if(isLoading){
+    <div  class="text-center mt-4">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>}
+  </div>

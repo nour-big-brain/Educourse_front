@@ -1,0 +1,47 @@
+<div class="container cours-list-container">
+  <h2 class="text-center mb-4">Course List</h2>
+  <div class="cours-cards">
+    @for (cours of coursList; track $index) {
+    <div class="cours-card card shadow-sm mb-4">
+      <!-- Course Image -->
+      <img
+        [src]="'data:image/png;base64,' + cours.image"
+        class="card-img-top"
+        alt="Course Image"
+      />
+      <div class="card-body">
+        <!-- Course Title -->
+        <h3 class="card-title">{{ cours.titre_cours }}</h3>
+        {{cours.idCours}}
+        <!-- Course Duration -->
+        <p class="card-text"><strong>Duration:</strong> {{ cours.duree_cours }} hours</p>
+        <!-- Actions -->
+        <div class="cours-card-actions mt-3">
+          @if (!isSignedUp(cours.idCours)) {
+          <button
+            class="btn btn-primary"
+            (click)="signUp(cours)"
+            [disabled]="!loggedIn"
+          >
+            Sign Up
+          </button>
+          }
+          @if (isSignedUp(cours.idCours)) {
+          <button class="btn btn-secondary" disabled>
+            Signed In
+          </button>
+          }
+          @if (isTeacher) {
+          <button
+            class="btn btn-danger"
+            (click)="deleteCours(cours.idCours)"
+          >
+            Delete
+          </button>
+          }
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

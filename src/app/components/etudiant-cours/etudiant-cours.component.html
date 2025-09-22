@@ -1,0 +1,19 @@
+<div class="container etudiant-cours-container">
+  <h2 class="text-center mb-4">Courses for Student ID: {{ etudiantId }}</h2>
+  <div class="cours-cards">
+    @for (cours of coursList; track $index) {
+    <div class="cours-card">
+      <div class="cours-card-header">
+        <h3>{{ cours.titre_cours }}</h3>
+      </div>
+      <div class="cours-card-body">
+        <p><strong>Duration:</strong> {{ cours.duree_cours }}</p>
+      </div>
+      <div class="cours-card-actions">
+        <button class="btn btn-info" (click)="viewMaterials(cours.idCours)">View Materials</button>
+        <button class="btn btn-success" (click)="takeExam(cours.idCours)">See Exams</button>
+      </div>
+    </div>
+    }
+  </div>
+</div>

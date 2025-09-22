@@ -1,0 +1,98 @@
+<div class="container mt-4">
+    <h2 class="section-title text-center mb-4">Update Question</h2>
+  
+    @if (isLoading) {
+      <div class="text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    }
+  
+    @if (!isLoading) {
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <form (ngSubmit)="saveQuestion()">
+            <div class="form-group mb-4">
+              <label for="content" class="form-label">Question Content:</label>
+              <textarea
+                id="content"
+                [(ngModel)]="question.content"
+                name="content"
+                class="form-control"
+                placeholder="Enter question content"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group mb-4">
+              <label for="optionA" class="form-label">Option A:</label>
+              <input
+                type="text"
+                id="optionA"
+                [(ngModel)]="question.optionA"
+                name="optionA"
+                class="form-control"
+                placeholder="Enter option A"
+                required
+              />
+            </div>
+            <div class="form-group mb-4">
+              <label for="optionB" class="form-label">Option B:</label>
+              <input
+                type="text"
+                id="optionB"
+                [(ngModel)]="question.optionB"
+                name="optionB"
+                class="form-control"
+                placeholder="Enter option B"
+                required
+              />
+            </div>
+            <div class="form-group mb-4">
+              <label for="optionC" class="form-label">Option C:</label>
+              <input
+                type="text"
+                id="optionC"
+                [(ngModel)]="question.optionC"
+                name="optionC"
+                class="form-control"
+                placeholder="Enter option C"
+                required
+              />
+            </div>
+            <div class="form-group mb-4">
+              <label for="correctAnswer" class="form-label">Correct Answer:</label>
+              <input
+                type="text"
+                id="correctAnswer"
+                [(ngModel)]="question.correctAnswer"
+                name="correctAnswer"
+                class="form-control"
+                placeholder="Enter correct answer"
+                required
+              />
+            </div>
+            <div class="form-group mb-4">
+              <label for="points" class="form-label">Points:</label>
+              <input
+                type="number"
+                id="points"
+                [(ngModel)]="question.points"
+                name="points"
+                class="form-control"
+                placeholder="Enter points for the question"
+                required
+              />
+            </div>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-success px-4">Save Changes</button>
+              <button type="button" class="btn btn-secondary px-4" (click)="navigateToManageQuestions()">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    }
+  </div>

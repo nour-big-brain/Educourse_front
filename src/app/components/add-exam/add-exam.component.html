@@ -1,0 +1,153 @@
+<div class="container mt-5">
+  <div class="row align-items-center mb-4">
+    <div class="col-auto">
+      <button class="btn btn-outline-secondary" (click)="goBack()">Go Back</button>
+    </div>
+    <div class="col text-center">
+      <h1 class="section-title">Manage Exam Questions</h1>
+      <p class="text-muted">Add, view, and manage questions for your exam.</p>
+    </div>
+  </div>
+
+  @if (isLoading) {
+    <div class="text-center my-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  } @else {
+    @if (isTeacher) {
+      <div class="card shadow-sm mb-5">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0">Add a New Question</h3>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="addQuestion()">
+            <div class="mb-4">
+              <label for="questionText" class="form-label">Question Text:</label>
+              <textarea
+                id="questionText"
+                class="form-control"
+                [(ngModel)]="newQuestion.content"
+                name="content"
+                rows="3"
+                placeholder="Enter the question text"
+                required
+              ></textarea>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">Options:</label>
+              <div class="input-group mb-2">
+                <span class="input-group-text">A</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="newQuestion.optionA"
+                  name="optionA"
+                  placeholder="Enter Option A"
+                  required
+                />
+              </div>
+              <div class="input-group mb-2">
+                <span class="input-group-text">B</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="newQuestion.optionB"
+                  name="optionB"
+                  placeholder="Enter Option B"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <span class="input-group-text">C</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="newQuestion.optionC"
+                  name="optionC"
+                  placeholder="Enter Option C"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="correctAnswer" class="form-label">Correct Answer:</label>
+              <select
+                id="correctAnswer"
+                class="form-select"
+                [(ngModel)]="newQuestion.correctAnswer"
+                name="correctAnswer"
+                required
+              >
+                <option value="" disabled>Select the correct answer</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label for="points" class="form-label">Points:</label>
+              <input
+                type="number"
+                id="points"
+                class="form-control"
+                [(ngModel)]="newQuestion.points"
+                name="points"
+                placeholder="Enter points for this question"
+                required
+                min="1"
+              />
+            </div>
+
+            <div class="text-end">
+              <button type="submit" class="btn btn-primary px-4" [disabled]="isLoading">
+                @if (isLoading) {
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Adding...
+                } @else {
+                  Add Question
+                }
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    }
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-secondary text-white">
+        <h3 class="mb-0">Current Questions</h3>
+      </div>
+      <div class="card-body">
+        @if (questions.length === 0) {
+          <div class="alert alert-info text-center">No questions added yet.</div>
+        } @else {
+          <ul class="list-group">
+            @for (question of questions; track question.id) {
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <strong>{{ question.content }}</strong>
+                    <div class="mt-2">
+                      <span class="badge bg-primary me-2">A: {{ question.optionA }}</span>
+                      <span class="badge bg-primary me-2">B: {{ question.optionB }}</span>
+                      <span class="badge bg-primary">C: {{ question.optionC }}</span>
+                    </div>
+                    <div class="mt-2">
+                      <span class="badge bg-success">Correct: {{ question.correctAnswer }}</span>
+                      <span class="badge bg-warning ms-2">Points: {{ question.points }}</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    </div>
+  }
+</div>

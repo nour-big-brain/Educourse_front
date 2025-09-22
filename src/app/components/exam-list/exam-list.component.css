@@ -1,0 +1,74 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 2rem;
+  }
+  
+  .exam-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .exam-card {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .exam-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  
+  .btn-take-exam {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-take-exam:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .no-exams {
+    text-align: center;
+    font-size: 1.25rem;
+    color: #6c757d;
+    margin-top: 2rem;
+  }

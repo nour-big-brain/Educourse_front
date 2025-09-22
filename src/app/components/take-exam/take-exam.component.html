@@ -1,0 +1,51 @@
+@if (!result) {
+  <div class="container mt-5 p-4 border rounded shadow-sm bg-white">
+    <h1 class="mb-4 text-center text-primary">📘 Exam #{{ examId }}</h1>
+    <p class="text-muted text-center mb-5">Answer all the questions below and submit your exam.</p>
+
+    <form (ngSubmit)="submitAnswers($event)">
+      @for (q of questions; track q.id; let i = $index) {
+        <fieldset class="mb-5 p-4 border rounded bg-light">
+          <legend class="fw-bold fs-4 text-primary">Question {{ i + 1 }}</legend>
+          <p class="fs-5 text-dark">{{ q.content }}</p>
+
+          @for (choice of ['A', 'B', 'C']; track choice) {
+            <div class="form-check ms-3">
+              <input class="form-check-input"
+                    type="radio"
+                    [id]="'q' + q.id + choice"
+                    [name]="'question-' + q.id"
+                    [value]="choice"
+                    [checked]="isSelected(q.id, choice)"
+                    (change)="selectAnswer(q.id, choice)">
+              <label class="form-check-label fs-6" [for]="'q' + q.id + choice">
+                {{ choice }}. {{ getOption(q, choice) }}
+              </label>
+            </div>
+          }
+        </fieldset>
+      }
+
+      <div class="text-center">
+        <button class="btn btn-lg btn-success px-5" type="submit">
+          Submit Exam
+        </button>
+      </div>
+    </form>
+  </div>
+}
+
+@if (result) {
+  <div class="container mt-5 text-center p-4 border rounded bg-white shadow-sm">
+    <h2 class="mb-3 text-primary">Your Score: <span class="text-info">{{ result.score }}%</span></h2>
+
+    @if (result.passed) {
+      <p class="text-success fs-5">🎉 Congratulations! You passed the exam.</p>
+      <button class="btn btn-outline-primary mt-4" (click)="downloadCertificate()">Download Certificate</button>
+    } @else {
+      <p class="text-danger fs-5">😞 Sorry, you didn't pass. Try again later.</p>
+    }
+
+    <button class="btn btn-outline-secondary mt-4" (click)="goBackToExams()">Go Back to Exams</button>
+  </div>
+}

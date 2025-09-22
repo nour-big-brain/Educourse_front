@@ -1,0 +1,48 @@
+<nav style="margin-bottom: 40px;" class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm px-4">
+    <a class="navbar-brand" routerLink="/">🎓 EduCourse</a>
+  
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        @if (authService.isStudent()) {
+            
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/etudiant-cours', authService.getEtudiantId()]">My Courses</a>
+          </li>
+        }
+        
+        @if (authService.isTeacher()) {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cours">Add Course</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/examManagement">Manage exams</a>
+          </li>
+        }
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/coursList">Course List</a>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">About</a>
+        </li>
+        
+      </ul>
+  
+      <ul class="navbar-nav">
+        @if (!authService.isLoggedIn()) {
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-light me-2" routerLink="/login">Login</a>
+          </li>
+        }
+        @if (authService.isLoggedIn()) {
+          <li class="nav-item">
+            <button class="btn btn-outline-light" (click)="logout()">Logout</button>
+          </li>
+        }
+      </ul>
+    </div>
+  </nav>

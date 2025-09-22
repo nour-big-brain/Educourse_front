@@ -1,0 +1,85 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #e9ecef; /* Softer background color */
+  padding: 1rem;
+}
+
+.picture-container {
+  margin-right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picture {
+  background-image: url('../../../../public/pic.jpg'); /* Path from the root of the app */
+  background-size: cover;
+  background-position: center;
+  width: 350px;
+  height: 250px;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+  background-color: #ffffff;
+  padding: 2.5rem; /* Increased padding for better spacing */
+  border-radius: 0.75rem; /* Slightly more rounded corners */
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form h2 {
+  margin-bottom: 2rem; /* More spacing below the title */
+  font-size: 2rem; /* Larger font size for emphasis */
+  text-align: center;
+  color: #343a40; /* Darker color for better readability */
+}
+
+.login-form .form-group {
+  margin-bottom: 1.5rem; /* Increased spacing between form groups */
+}
+
+.login-form .form-group label {
+  font-weight: bold; /* Make labels stand out */
+  color: #495057; /* Subtle color for labels */
+}
+
+.login-form .form-control {
+  border: 1px solid #ced4da; /* Add border for better visibility */
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.login-form .form-control:focus {
+  border-color: #80bdff; /* Highlight border on focus */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Add focus shadow */
+}
+
+.login-form .btn-primary {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #007bff; /* Brighter button color */
+  border: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.login-form .btn-primary:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.error {
+  color: #dc3545;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+}

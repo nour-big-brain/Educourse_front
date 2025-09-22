@@ -1,0 +1,38 @@
+<div class="login-container">
+  <div class="picture-container">
+    <div class="picture" alt="Login Image" ></div>
+  </div>
+  
+  <div class="login-form">
+    <h2>Login</h2>
+    <form (ngSubmit)="onLogin()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          [(ngModel)]="email" 
+          name="email" 
+          class="form-control" 
+          required 
+          autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          [(ngModel)]="password" 
+          name="password" 
+          class="form-control" 
+          required 
+          autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    
+    <!-- Error message with correct Angular syntax -->
+    @if(errorMessage){
+    <p class="error">{{ errorMessage }}</p>}
+  </div>
+</div>

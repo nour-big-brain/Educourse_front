@@ -1,0 +1,27 @@
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 2rem;
+  }
+  
+  .card {
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }

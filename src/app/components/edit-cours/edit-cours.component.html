@@ -1,0 +1,10 @@
+<h2>Edit Course</h2>
+<form (ngSubmit)="updateCours()">
+  <label for="titre_cours">Course Title:</label>
+  <input type="text" id="titre_cours" [(ngModel)]="cours.titre_cours" name="titre_cours" required />
+
+  <label for="duree_cours">Course Duration:</label>
+  <input type="number" id="duree_cours" [(ngModel)]="cours.duree_cours" name="duree_cours" required />
+
+  <button type="submit">Update Course</button>
+</form>

@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Roboto', 'Arial', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', 'Arial', sans-serif;
+  }
+  h1 {
+  font-size: 2.5rem;
+  color: #007bff; /* Primary color for main titles */
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #0056b3; /* Slightly darker shade for subtitles */
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.75rem;
+  color: #333; /* Neutral color for smaller headings */
+}
+
+h4 {
+  font-size: 1.5rem;
+  color: #555;
+}

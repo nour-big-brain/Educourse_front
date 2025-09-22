@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <h2 style="margin-bottom: 40px;">Course Materials</h2>
+
+  <div class="d-flex justify-content-center flex-wrap">
+    @for (material of materials; track $index) {
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center p-3">
+          <div class="card-body">
+            @if (isPdfMaterial(material)) {
+              <i class="bi bi-file-earmark-pdf-fill text-danger" style="font-size: 4rem;"></i>
+              <h5 class="card-title mt-3">PDF Document</h5>
+            } @else if (isVideoMaterial(material)) {
+              <i class="bi bi-play-circle-fill text-primary" style="font-size: 4rem;"></i>
+              <h5 class="card-title mt-3">Video Content</h5>
+            } @else {
+              <i class="bi bi-file-earmark-fill text-secondary" style="font-size: 4rem;"></i>
+              <h5 class="card-title mt-3">Resource</h5>
+            }
+          </div>
+          <div class="card-footer bg-transparent">
+            <a [href]="material" target="_blank" class="btn btn-primary w-100">
+              View / Download
+            </a>
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <div class="col-12">
+        <div class="alert alert-info">No materials available for this course</div>
+      </div>
+    }
+  </div>
+</div>

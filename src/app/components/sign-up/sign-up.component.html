@@ -1,0 +1,41 @@
+<div class="login-container">
+    <div class="picture-container">
+      <div class="picture"></div>
+    </div>
+  
+    <div class="login-form">
+      <h2>Student Registration</h2>
+      
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="emailEtud">Email</label>
+          <input type="email" id="emailEtud" [(ngModel)]="student.emailEtud" name="emailEtud" class="form-control" required />
+        </div>
+    
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" [(ngModel)]="student.password" name="password" class="form-control" required />
+        </div>
+        <div  class="form-group">
+            <label for="nomEtud">Name:</label>
+            <input id="nomEtud" [(ngModel)]="student.nomEtud" name="nomEtud" type="text" class="form-control" required />
+          </div>
+        
+          <div  class="form-group">
+            <label for="dateNaissance">Date of Birth:</label>
+            <input id="dateNaissance" [(ngModel)]="student.dateNaissance" name="dateNaissance" type="date"  class="form-control"required />
+          </div>
+        
+          <div  class="form-group">
+            <label for="niveau">Level:</label>
+            <input id="niveau" [(ngModel)]="student.niveau" name="niveau" type="text" required class="form-control" />
+          </div>
+    
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+      
+      @if (message) {
+        <p class="error">{{ message }}</p>
+      }
+    </div>
+  </div>
